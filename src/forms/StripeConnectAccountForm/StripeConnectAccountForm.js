@@ -200,6 +200,13 @@ const ErrorsMaybe = props => {
     <div className={css.error}>
       <FormattedMessage id="StripeConnectAccountForm.createStripeAccountFailed" />
     </div>
+  ) : isStripeError(stripeAccountLinkError) ? (
+    <div className={css.error}>
+      <FormattedMessage
+        id="StripeConnectAccountForm.createStripeAccountLinkFailedWithStripeError"
+        values={{ stripeMessage: stripeAccountLinkError.apiErrors[0].meta.stripeMessage }}
+      />
+    </div>
   ) : stripeAccountLinkError ? (
     <div className={css.error}>
       <FormattedMessage id="StripeConnectAccountForm.createStripeAccountLinkFailed" />
